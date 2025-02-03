@@ -1,0 +1,545 @@
+body {
+  font-family: Arial;
+  background: #f1f1f1;
+  margin: 0%;
+  padding: 0%;
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+display: flex;
+align-items: center;
+overflow: hidden;
+background-color: #48a54b;
+padding-right: 60px;
+justify-content: space-between;
+border-radius: 2px;
+}
+
+
+/* Style the topnav links */
+.topnav ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+.topnav li {
+  align-items: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 16px 20px;
+  text-decoration: none;
+  margin-right: 25px;
+}
+.topnav h2 {
+  color: #fcfcfc;
+  text-align: center;
+  padding-left: 13px;
+  text-decoration: none;
+  padding-left: 60px;
+}
+
+/* Change color on hover */
+.topnav ul li a {
+    text-decoration: none; 
+    color: white; 
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s; 
+  }
+  
+  .topnav ul li a:hover {
+    color: rgb(211, 204, 204);
+  }
+
+/* Header/Blog Title */
+.header img {
+  display: block; 
+  width: 100%; 
+  height: 428px;
+  position: relative;
+  z-index: -1; 
+}
+
+h2, h5{
+  color: gray;
+}
+
+.header .content-1,
+.header .header-content-2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header .content-1,
+.header .header-content-2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.header .content-1 {
+  top: 17%; 
+}
+
+.header .header-content-2 {
+  top: 24%; 
+}
+.header-content-2 .button-submit {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #48a54b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/*search box*/
+/* Wrapper untuk seluruh search box */
+/* Frame Utama Search Box */
+.c_search-box-frame {
+  top: 10%;
+  gap: 14px;
+  width: 100%;
+  display: flex;
+  padding: 16px 32px;
+  position: relative;
+  max-width: 970px;
+  box-shadow: 0 4px 34px 0 rgba(0,0,0,.1);
+  box-sizing: border-box;
+  align-items: flex-start;
+  border-radius: 8px 8px 8px 8px;
+  justify-content: center;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+/* Styling untuk tiap frame dengan input dan select */
+.c_search-box-frame01, .c_search-box-frame03, .c_search-box-frame11 {
+  width: 100%;
+  max-width: 145px;
+  box-sizing: border-box;
+}
+
+/* Lokasi, Kategori, Penjual Section - Background dan Padding */
+.c_search-box-frame01, .c_search-box-frame04, .c_search-box-frame12 {
+  display: flex;
+  padding: 14px 1px;
+  align-items: center;
+  border-radius: 6px;
+}
+
+/* Icon Frame Styling */
+.c_search-box-frame02, .c_search-box-frame05, .c_search-box-frame13 {
+  max-width: 18px;
+}
+
+/* Styling text pada dropdown */
+.c_search-box-text, .c_search-box-text1, .c_search-box-text3, .c_search-box-text7 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #434343;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+
+.c_search-box-text1, .c_search-box-text3, .c_search-box-text7 {
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Dropdown Styling */
+.c_search-box-select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: "Inter", sans-serif;
+  color: #434343;
+  text-align: center;
+}
+
+/* Search Section Styling */
+.c_search-box-frame06 {
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+  align-items: center;
+}
+
+.c_search-box-frame07 {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 6px;
+}
+
+.c_search-box-frame08 {
+  flex-grow: 1;
+  padding: 10px 12px;
+}
+
+.c_search-box-text4 {
+  margin: 0;
+  padding-left: 10px;
+  width: 100%;
+}
+
+/* Input Search Box */
+.c_search-box-text5 {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+/* Button Search Styling */
+.c_search-box-frame09 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.c_search-box-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.c_search-box-button:hover {
+  background-color: #0056b3;
+}
+
+/* Penjual Section Styling */
+.c_search-box-frame12 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.c_search-box-frame13 {
+  max-width: 16px;
+  margin-bottom: 5px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .c_search-box-frame {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .c_search-box-frame01, .c_search-box-frame03, .c_search-box-frame11 {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .c_search-box-frame06 {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .c_search-box-frame07 {
+    width: 100%;
+  }
+
+  .c_search-box-frame09 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Text for each section */
+.c_search-box-text,
+.c_search-box-text1, .c_search-box-text2, .c_search-box-text3,
+.c_search-box-text4, .c_search-box-text5  {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+
+/* Kategori Section */
+.c_search-box-frame04 {
+  gap: 3.61px;
+  display: flex;
+  padding: 14px 1px;
+  border-radius: 6px;
+}
+
+.c_search-box-text2 {
+  text-align: center;
+  width: 100%;
+  max-width: auto;
+}
+
+/* Search Box */
+.c_search-box-frame06, .c_search-box-frame07, .c_search-box-frame08 {
+  width: 100%;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.c_search-box-frame06 {
+  max-width: 462px;
+}
+
+.c_search-box-frame07 {
+  padding: 10px;
+  max-width: 419px;
+  border-radius: 6px;
+}
+
+.c_search-box-frame08 {
+  padding: 1px 0 2px 10px;
+}
+
+.c_search-box-text4 {
+  width: 100%;
+  max-width: 100%;
+  min-height: auto;
+}
+
+.c_search-box-text5 {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+
+/* Styling untuk Text Label di Penjual */
+.c_search-box-text6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #434343;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+/* Frame for Search Button */
+.c_search-box-frame09 {
+  display: flex;
+  padding: 11px 13px 10px;
+  position: relative;
+  max-width: 44px;
+  border-radius: 0 6px 6px 0;
+}
+
+.c_search-box-frame10 {
+  max-width: 18px;
+}
+
+/* Penjual Section */
+.c_search-box-frame12 {
+  max-width: 145px;
+  border-radius: 6px;
+}
+.c_search-box-frame13 {
+  max-width: 16px;
+  margin-right: 6px;
+}
+
+
+/* General Padding and Alignment for Text Elements */
+.c_search-box-text, .c_search-box-text2, .c_search-box-text4 {
+  width: 100%;
+  max-width: auto;
+  min-height: auto;
+}
+
+/* content product */
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content-product {
+  max-width: 1000px;
+  width: 100%;
+  height: 200px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card h2 {
+  margin-top: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.button-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.button-submit:hover {
+  background-color: #156117;
+}
+/* gambar produk */
+.card ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+li{
+  list-style-type: none;
+  padding-right: 5px;
+}
+li img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* content about */
+.about-us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+margin-top: 10%;
+}
+
+.content-about-us {
+  max-width: 1000px;
+  width: 100%;
+  height: 200px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container-top {
+  padding: 40px 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.container-top .row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 234px;
+}
+
+.container-top .col {
+  flex: 1;
+  margin: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.container-top .col img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.container-top .col h5 {
+  margin-top: 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.container-top .col p {
+  color: #666;
+  font-size: 14px;
+}
+
+
+
+/* Footer */
+.footer {
+  padding-top: 10%;
+  max-width: 100%;
+  width: 100%;
+  padding: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    float: none;
+    width: 100%;
+  }
+  
+}
+
+
+@media screen and (max-width: 768px) {
+  .container-top .row {
+    flex-direction: column;
+  }
+  .container-top .col {
+    margin-bottom: 20px;
+  }
+}

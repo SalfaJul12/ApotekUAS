@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 76px;
+}
+
+.topnav {
+    width: 100%;
+    background-color: #48a54b;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.topnav h2 {
+    margin: 0;
+    font-size: 24px;
+    margin-left: 40px;
+}
+
+nav.topnav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-right: 62px;
+}
+
+nav.topnav ul li {
+    display: inline;
+}
+
+nav.topnav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-right: 65px;
+}
+
+nav.topnav ul li a:hover {
+    background-color: #45a049;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+}
+
+td {
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+}
+
+td input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Styling untuk form pembayaran (frame seperti Shopee) */
+.payment-frame {
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.payment-frame h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.payment-frame .input-group {
+    margin-bottom: 20px;
+}
+
+.payment-frame .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.payment-frame .input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.payment-frame .button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.payment-frame .button button {
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.payment-frame .button button:hover {
+    background-color: #45a049;
+}
