@@ -1,8 +1,13 @@
 <?php
+session_start();
     if (isset($_GET['id'])) {
         include "../../connection.php";
     
         $query = "DELETE FROM users WHERE users_id = '$_GET[id]'";
+
+        $userid = $_SESSION['users_id'];
+        $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Menghapus User', NOW())";
+        $conn->query($activity_query);
         
         $delete = mysqli_query($conn, $query);
     

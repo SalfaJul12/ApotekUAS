@@ -23,7 +23,7 @@ if (isset($_POST['save'])) {
                              VALUES ('$transaksi_id', '$nama_obat', '$tipe_obat', '$jumlah_obat', '$harga_obat', '$total_harga')";
 
             $userid = $_SESSION['users_id'];
-            $activity_query = "INSERT INTO log(users_id, aksi) VALUES ('$userid', 'Telah Menambahkan Transaksi')";
+            $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Menambahkan Transaksi', NOW())";
             $conn->query($activity_query);
 
             if ($conn->query($query_detail) === TRUE) {

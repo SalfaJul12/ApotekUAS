@@ -26,7 +26,7 @@ if (isset($_POST['save'])) {
         $query = "INSERT INTO obat (nama_obat, stock, tipe_obat, foto, harga_obat) 
                   VALUES ('$nama_obat', '$stock', '$tipe_obat', '$foto_path', '$harga_obat')";
         $userid = $_SESSION['users_id'];
-        $activity_query = "INSERT INTO log(users_id, aksi) VALUES ('$userid', 'Telah Menambahkan Obat')";
+        $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Menambahkan Obat', NOW())";
         $conn->query($activity_query);
         
         if ($conn->query($query)) {

@@ -150,7 +150,7 @@ $no = 1;
                 </div>
                 <div class="form-group">
                     <label for="foto">Photo</label>
-                    <input type="file" id="edit_foto" name="foto" accept="image/*" required>
+                    <input type="file" id="edit_foto" name="foto" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label for="edit_tipe_obat">Tipe Obat</label>

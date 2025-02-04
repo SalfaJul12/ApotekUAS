@@ -26,6 +26,9 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $user['email'];
 
             echo "<script>alert('Login successful!'); window.location.replace('../index.php');</script>";
+            $userid = $_SESSION['users_id'];
+            $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Melakukan Login', NOW())";
+            $conn->query($activity_query);
             exit();
         } else {
             echo "<script>alert('Login failed: Incorrect password!'); window.location.replace('login-form.php');</script>";

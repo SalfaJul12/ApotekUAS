@@ -33,11 +33,12 @@ $result_obat = $conn->query($query_obat);
                     <th>Nama Customer</th>
                     <th>Tanggal Transaksi</th>
                     <th>Status Pembayaran</th>
+                    <th>Nominal Pembayaran Terbaru</th>
                     <th>Action</th>
                 </tr>
                 <?php 
                 $i = 1;
-                $query = "SELECT dt.*, t.nama_customer, t.created_at, t.status_pembayaran 
+                $query = "SELECT dt.*, t.nama_customer, t.created_at, t.status_pembayaran, t.nominal
                         FROM detail_transaksi dt
                         LEFT JOIN transaksi t ON dt.id_transaksi = t.id_transaksi";
                 $result = $conn->query($query);
@@ -53,6 +54,7 @@ $result_obat = $conn->query($query_obat);
                     <td><?php echo isset($row['nama_customer']) ? $row['nama_customer'] : 'N/A'; ?></td>
                     <td><?php echo isset($row['created_at']) ? $row['created_at'] : 'N/A'; ?></td>
                     <td><?php echo isset($row['status_pembayaran']) ? $row['status_pembayaran'] : 'N/A'; ?></td>
+                    <td>Rp <?php echo isset($row['nominal']) ? $row['nominal'] : '0'; ?></td>
                     <td>
                         <button class="detail-button" 
                             data-nama_customer="<?php echo htmlspecialchars($row['nama_customer']); ?>"
@@ -99,7 +101,7 @@ $result_obat = $conn->query($query_obat);
             <div class="form-group">
                 <label for="nama_obat">Nama Obat</label>
                 <select id="nama_obat" name="nama_obat" required>
-                    <option value="">Pilih Obat</option>
+                    <option value="" disabled selected>Pilih Obat</option>
                     <?php while ($row_obat = $result_obat->fetch_assoc()) { ?>
                         <option value="<?php echo $row_obat['nama_obat']; ?>" data-tipe="<?php echo $row_obat['tipe_obat']; ?>" data-harga="<?php echo $row_obat['harga_obat']; ?>">
                             <?php echo $row_obat['nama_obat']; ?>
@@ -151,7 +153,7 @@ $result_obat = $conn->query($query_obat);
             </div>
             <div class="form-actions">
                 <button type="submit" class="confirm">Konfirmasi</button>
-                <input type="hidden" id="confirmIdTransaksi" name="id_transaksi">
+                <input type="hidden" id="confirm" name="id_transaksi">
             </div>
         </form>
     </div>
@@ -196,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const hargaObat = document.getElementById('harga_obat');
     const jumlahObat = document.getElementById('jumlah_obat');
     const totalHarga = document.getElementById('total_harga');
+    const nominal = document.getElementById('nominal');
 
     // Event listener untuk tombol "TAMBAH TRANSAKSI"
     addButton.addEventListener('click', function (e) {
@@ -250,11 +253,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const idTransaksi = this.getAttribute('data-id'); 
             const namaCustomer = this.getAttribute('data-nama_customer');
             const totalHarga = this.getAttribute('data-total');
+            const nominal = document.getElementById('confirmNominal').value;
 
             // Isi data ke dalam modal konfirmasi
             document.getElementById('confirmNamaCustomer').value = namaCustomer;
             document.getElementById('confirmTotalHarga').value = totalHarga;
-            document.getElementById('confirmIdTransaksi').value = idTransaksi;
+            document.getElementById('confirm').value = idTransaksi;
+            document.getElementById('confirmNominal').value = nominal;
 
             // Tampilkan modal
             const confirmModal = document.getElementById('confirmModal');

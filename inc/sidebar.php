@@ -54,12 +54,14 @@ $row = $result->fetch_assoc();
                 Laporan
             </a>
         </li>
+        <?php if($_SESSION['role']== 'Manager'){ ?>
         <li class="menu-item">
             <a href="./data_users.php" class="<?= $current_page == 'data_users.php' ? 'active' : '' ?>">
                 <img src="assets/icons/user.svg" alt="Report Icon">
                 Users
             </a>
         </li>
+        <?php } ?>
     </ul>
 
     <div class="logout">

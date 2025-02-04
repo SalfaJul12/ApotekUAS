@@ -47,11 +47,12 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
                     <?php } ?>
                 </select>
                 <input type="submit" value="Cari">
+                <button><a href="admin/data_laporan/print_laporan.php">Download</a></button>   
             </p>
         </form>
 
         <div class="tabel-data">
-            <div class="table_container">
+            <div class="table_container" id="printArea">
                 <table>
                     <tr>
                         <th>No</th>
@@ -60,26 +61,30 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
                         <th>Jumlah Obat</th>
                         <th>Tipe Obat</th>
                         <th>Tanggal Pembelian</th>
+                        <th>Harga Satuan</th>
+                        <th>Nominal</th>
                         <th>Total Penjualan Obat</th>
                         <th>Action</th>
                     </tr>
                     <?php if ($result && $result->num_rows > 0): ?>
                         <?php $no = 1; ?>
                         <?php while ($row = $result->fetch_assoc()): ?>
-                            <tr>
+                            <tr id="transaction-<?= $row['id_transaksi'] ?>">
                                 <td><?= $no++ ?></td>
-                                <td><?= $row['nama_customer'] ?></td>
-                                <td><?= $row['nama_obat'] ?></td>
-                                <td><?= $row['jumlah_obat'] ?></td>
-                                <td><?= $row['tipe_obat'] ?></td>
-                                <td><?= $row['created_at'] ?></td>
-                                <td>Rp<?= number_format($row['total_harga'], 2) ?></td>
-                                <td><a href="delete_transaksi.php?id=<?= $row['id_transaksi'] ?>">Print</a></td>
+                                <td class="nama-customer"><?= $row['nama_customer'] ?></td>
+                                <td class="nama-obat"><?= $row['nama_obat'] ?></td>
+                                <td class="jumlah-obat"><?= $row['jumlah_obat'] ?></td>
+                                <td class="tipe-obat"><?= $row['tipe_obat'] ?></td>
+                                <td class="tanggal-pembelian"><?= $row['created_at'] ?></td>
+                                <td class="total-harga"><?= $row['total_harga'] ?></td>
+                                <td class="nominal">Rp<?= $row['nominal'] ?></td>
+                                <td class="total-harga-sebelum">Rp <?= number_format($row['total_harga_sebelum'], 2) ?></td>
+                                <td><button onclick="printTransaction(<?= $row['id_transaksi'] ?>)">Print</button></td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="8">Tidak ada data untuk bulan dan tahun ini.</td>
+                            <td colspan="10">Tidak ada data untuk bulan dan tahun ini.</td>
                         </tr>
                     <?php endif; ?>
                 </table>
@@ -111,4 +116,44 @@ th {
     z-index: 2;
 }
 </style>
+
+<script>
+    function printTransaction(id_transaksi) {
+        console.log("Mencetak transaksi dengan ID: " + id_transaksi); // Pastikan ID transaksi tercetak
+
+        // Mendapatkan baris data transaksi yang sesuai dengan ID
+        var row = document.getElementById('transaction-' + id_transaksi);
+        
+        if (!row) {
+            console.log("Baris transaksi tidak ditemukan!");
+            return;
+        }
+
+        var nama_customer = row.querySelector('.nama-customer').innerText;
+        var nama_obat = row.querySelector('.nama-obat').innerText;
+        var jumlah_obat = row.querySelector('.jumlah-obat').innerText;
+        var tipe_obat = row.querySelector('.tipe-obat').innerText;
+        var tanggal_pembelian = row.querySelector('.tanggal-pembelian').innerText;
+        var total_harga_sebelum = row.querySelector('.total-harga-sebelum').innerText;
+        var total_harga = row.querySelector('.total-harga').innerText;
+        var nominal = row.querySelector('.nominal') ? row.querySelector('.nominal').innerText : "N/A";
+
+        // Menggunakan jsPDF untuk membuat PDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text('ID: ' + id_transaksi, 10, 10);
+        doc.text('Nama Customer: ' + nama_customer, 10, 20);
+        doc.text('Obat yang dibeli: ' + nama_obat, 10, 30);
+        doc.text('Jumlah Obat: ' + jumlah_obat, 10, 40);
+        doc.text('Tipe Obat: ' + tipe_obat, 10, 50);
+        doc.text('Tanggal Pembelian: ' + tanggal_pembelian, 10, 60);
+        doc.text('Harga Satuan: ' + total_harga, 10, 70);
+        doc.text('Nominal Pembayaran: ' + nominal, 10, 80);
+        doc.text('Total Pembelian: ' + total_harga_sebelum, 10, 90);
+
+        doc.save('Kuitansi_Apotek_Bersama_' + tanggal_pembelian + '.pdf');
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </html>

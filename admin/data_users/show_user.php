@@ -126,7 +126,7 @@ $no = 1;
                 </div>
                 <div class="form-group">
                     <label for="edit_password">Password</label>
-                    <input type="password" id="edit_password" name="password_user" placeholder="New Password" required>
+                    <input type="password" id="edit_password" name="password_user" placeholder="New Password">
                 </div>
                 <div class="form-group">
                     <label for="edit_role">Role</label>

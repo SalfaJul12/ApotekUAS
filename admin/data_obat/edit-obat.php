@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../connection.php';
 
 if (isset($_POST['save'])) {
@@ -24,6 +25,10 @@ if (isset($_POST['save'])) {
             $query = "UPDATE obat SET nama_obat=?, stock=?, tipe_obat=?, harga_obat=?, foto=? WHERE id_obat=?";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("sisdsi", $nama_obat, $stock, $tipe_obat, $harga, $foto_path, $id_obat);
+
+            $userid = $_SESSION['users_id'];
+            $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Melakukan Update Obat', NOW())";
+            $conn->query($activity_query);
         } else {
             echo "Gagal mengupload gambar.";
             exit();
@@ -33,6 +38,10 @@ if (isset($_POST['save'])) {
         $query = "UPDATE obat SET nama_obat=?, stock=?, tipe_obat=?, harga_obat=? WHERE id_obat=?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sisdi", $nama_obat, $stock, $tipe_obat, $harga, $id_obat);
+        
+        $userid = $_SESSION['users_id'];
+        $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Melakukan Update Obat', NOW())";
+        $conn->query($activity_query);
     }
 
     if ($stmt->execute()) {

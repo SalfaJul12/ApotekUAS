@@ -30,36 +30,63 @@ if ($no_medicine_result) {
 
     <div class="data-section">
         <h2>Activiy Log</h2>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php 
-            $i = 1;
+        <div class="table_container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Aksi</th>
+                        <th>Waktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $i = 1;
 
-            $query = "SELECT log.log_id, users.username, log.aksi
-            FROM log
-            INNER JOIN users ON log.users_id=users.users_id";
+                $query = "SELECT log.log_id, users.username, log.aksi, log.created_at
+                FROM log
+                INNER JOIN users ON log.users_id=users.users_id";
 
-            $result = $conn->query($query);
-            while ($row = $result->fetch_assoc()) { ?>
-                <tr>
-                    <td><?php echo $i++; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['aksi']; ?></td>
-                </tr>
-            </tbody>
-            <?php } ?>
-        </table>
+                $result = $conn->query($query);
+                while ($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                        <td><?php echo $i++; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['aksi']; ?></td>
+                        <td><?php echo date('d F Y H:i', strtotime($row['created_at'])); ?></td>
+                    </tr>
+                </tbody>
+                <?php } ?>
+            </table>
+        </div>
     </div>
 </div>
 
 <style>
+.table_container {
+    max-height: 330px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
 .dashboard {
     font-family: 'Roboto', sans-serif;
 }

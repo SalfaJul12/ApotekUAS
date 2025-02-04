@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "../../connection.php";
     if (isset($_GET['id'])) {
         $id_obat = $_GET['id'];
@@ -8,6 +9,10 @@
             // Query DELETE dengan prepared statement
             $query = "DELETE FROM obat WHERE id_obat = ?";
             $stmt = mysqli_prepare($conn, $query);
+
+            $userid = $_SESSION['users_id'];
+            $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Menghapus Obat', NOW())";
+            $conn->query($activity_query);
 
             if ($stmt) {
                 // Bind parameter dan eksekusi

@@ -93,3 +93,17 @@ box-shadow: none;
     color: white;
     pointer-events: none;
 }
+
+@media print {
+    body {
+        visibility: hidden;
+    }
+    .tabel-data {
+        visibility: visible;
+        position: absolute;
+        border: solid black;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}

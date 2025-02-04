@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../connection.php';
 
 if (isset($_GET['id'])) {
@@ -60,6 +61,10 @@ if (isset($_GET['id'])) {
         // Hapus transaksi utama
         $query_delete_transaksi = "DELETE FROM transaksi WHERE id_transaksi = ?";
         $stmt_delete_transaksi = mysqli_prepare($conn, $query_delete_transaksi);
+
+        $userid = $_SESSION['users_id'];
+        $activity_query = "INSERT INTO log(users_id, aksi,created_at) VALUES ('$userid', 'Telah Menghapus Data Transaksi', NOW())";
+        $conn->query($activity_query);
 
         if ($stmt_delete_transaksi) {
             mysqli_stmt_bind_param($stmt_delete_transaksi, "i", $id_transaksi);
